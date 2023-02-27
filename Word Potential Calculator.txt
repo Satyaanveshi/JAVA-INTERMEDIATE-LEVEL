@@ -1,0 +1,57 @@
+import java.util.*;
+class potential
+{
+    public static void main()
+    {
+        String str,word="",temp;
+        int x,y=0,sum=0,min,t,c=0;char ch;   
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a sentence:");
+        str=sc.nextLine().toUpperCase();   
+        StringTokenizer st=new StringTokenizer(str);
+        c=st.countTokens();                  
+        System.out.println("The word count:"+c);
+        int sums[]=new int[c];
+        String words[]=new String[c];
+        for(x=0;x<str.length();x++)
+        {
+            ch=str.charAt(x);
+            if(ch==' '||ch=='$'||ch=='#'||ch=='?'||ch=='.')
+            {
+                sums[y]=sum;
+                words[y]=word;
+                word="";
+                sum=0;
+                y++;                               
+            }
+            else
+            {
+                word+=ch;
+                sum+=((int)ch-64);
+            }   
+        }
+        for(x=0;x<c;x++)
+        System.out.println(words[x]+"="+sums[x]);
+        for(x=0;x<c-1;x++)
+        {
+            min=x;            
+            for(y=x+1;y<c;y++)
+            {
+                if(sums[y]<sums[min])
+                {
+                    min=y;
+                }
+            }
+                t=sums[min];
+                sums[min]=sums[x];
+                sums[x]=t;
+                temp=words[min];
+                words[min]=words[x];
+                words[x]=temp;            
+        }    
+        System.out.println("Words arranged in ascending order:");        
+        for(x=0;x<c;x++)
+        System.out.print(words[x]+" ");
+        System.out.println('.');
+   }
+}
