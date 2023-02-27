@@ -1,0 +1,47 @@
+import java.util.*;
+class daynum
+{
+    public static void main()
+    {
+        int f=1,x,s=0;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter day,month and year:");
+        int d=sc.nextInt();
+        int m=sc.nextInt();
+        int yy=sc.nextInt();
+        int nod[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+        if(yy%4==0)
+        nod[2]=29;
+        if(m>12)
+        f=0;
+        else if(m==2)
+        {
+            if(yy%4==0)
+                {if(d>29)
+                 f=0;}
+            else
+            if(d>28)
+            f=0;
+        }
+        else if(m==4||m==6||m==9||m==11)
+        {
+            if(d>30)
+            f=0;
+        }
+        else
+        if(d>31)
+        f=0;
+        if(f==1)
+        {
+        System.out.println("Valid date.");
+        for(x=0;x<m;x++)
+        {
+            s+=nod[x];
+        }
+        s+=d;
+        System.out.println("The day number:"+s);
+    }
+    else
+    System.out.println("Invalid date.");
+    }
+}    
