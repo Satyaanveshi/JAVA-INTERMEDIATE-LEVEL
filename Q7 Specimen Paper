@@ -1,0 +1,71 @@
+import java.util.*;
+class OddEven
+{
+    int a[];
+    int m,len;
+    static Scanner sc=new Scanner(System.in);
+    OddEven(int mm)
+    {
+        m=mm;
+    }
+    void fillarray()
+    {        
+        a=new int[m]; 
+        System.out.println("Enter "+m+" elements for the array:");
+        for(int x=0;x<m;x++)
+        {
+            a[x]=sc.nextInt();
+        }
+    }
+    OddEven arrange(OddEven P,OddEven Q)
+    {
+        len=P.m+Q.m; //getting length of arrays of object P & Q through call by reference
+        OddEven t=new OddEven(len);
+        int x,y=0;           
+        int b[]=new int[len];
+        for(x=0;x<len;x++)
+        {
+            if(x<P.m)
+            b[x]=P.a[x];
+            else
+            b[x]=Q.a[x-P.m];
+        }
+        for(x=0;x<len;x++) //filling odd nos.
+        {
+            if(b[x]%2==1)
+            {
+                t.a[y]=b[x];
+                y++;
+            }
+        }
+        for(x=0;x<len;x++) //filling even nos.
+        {
+            if(b[x]%2==0)
+            {
+                t.a[y]=b[x];
+                y++;
+            }
+        }
+        return (t);
+    }
+    void display()
+    {
+        System.out.println("The arranged array:");
+        for(int x=0;x<len;x++)
+        System.out.print(a[x]+" ");
+    }
+    public static void main(String args[])
+    {
+        System.out.println("Enter size of first array:");
+        int s1=sc.nextInt();
+        System.out.println("Enter size of second array:");
+        int s2=sc.nextInt();
+        OddEven ob1=new OddEven(s1);
+        OddEven ob2=new OddEven(s2);
+        OddEven ob3=new OddEven(0);
+        ob1.fillarray();
+        ob2.fillarray();
+        ob3.arrange(ob1,ob2);
+        ob3.display();
+    }
+}
