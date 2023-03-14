@@ -1,0 +1,79 @@
+//SPECIMEN PAPER 2023
+//SECTION B
+//QUESTION 8
+
+
+
+import java.util.*;
+class Encrypt
+{
+    String wrd,newwrd;
+    int len;
+    static Scanner sc=new Scanner(System.in);
+    Encrypt()
+    {
+        wrd="";
+        newwrd="";
+        len=0;
+    }
+    void acceptword()
+    {
+        System.out.println("Enter a word in Uppercase form:");
+        wrd=sc.next();
+    }
+    void freqvowcon()
+    {
+        int vow=0,con=0;
+        for(int x=0;x<wrd.length();x++)
+        {
+            char ch=wrd.charAt(x);
+            switch(ch)
+            {
+                case 'A':
+                case 'E':
+                case 'I':
+                case 'O':
+                case 'U':
+                vow++;
+                break;
+                default: con++;
+            }
+        }
+        System.out.println("Frequency of vowels: "+vow);
+        System.out.println("Frequency of consonants: "+con);             
+    }
+    void nextVowel()
+    {
+        for(int x=0;x<wrd.length();x++)
+        {
+            char ch=wrd.charAt(x);
+            switch(ch)
+            {
+                case 'A':newwrd+='E';
+                break;
+                case 'E':newwrd+='I';
+                break;
+                case 'I':newwrd+='O';
+                break;
+                case 'O':newwrd+='U';
+                break;
+                case 'U':newwrd+='A';
+                break;
+                default:newwrd+=ch;            
+            }
+        }
+    }
+    void disp()
+    {
+        System.out.println("Th original word: "+wrd);
+        System.out.println("The encrypted word :"+newwrd);
+    }
+    public static void main(String args[])
+    {
+        Encrypt ob=new Encrypt();
+        ob.acceptword();
+        ob.freqvowcon();
+        ob.nextVowel();
+        ob.disp();
+    }
+}
