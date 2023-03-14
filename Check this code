@@ -1,0 +1,50 @@
+//Specimen Paper 2023 
+//Section B
+//Question 6
+import java.util.*;
+class Pronic
+{
+    int num;
+    static Scanner sc=new Scanner(System.in);
+    Pronic()
+    {
+        num=0;
+    }
+    void acceptnum()
+    {
+        System.out.println("Enter a positive integer number:");
+        num=sc.nextInt();
+    }
+    boolean ispronic(int v)
+    {
+        int x=0,k=0;
+        if(x>v)
+        {
+            if(k==1)
+            return true;
+        }
+        else
+        {
+            if(x*(x+1)==v)
+            {
+                k=1;
+            }
+            x++;
+            return ispronic(v);
+        }
+        return false;
+    }
+    void check()
+    {
+        if(ispronic(num))
+        System.out.println(num+" is a Pronic number.");
+        else
+        System.out.println(num+" is not a Pronic number.");
+    }
+    public static void main(String args[])
+    {
+        Pronic ob=new Pronic();
+        ob.acceptnum();
+        ob.check();
+    }
+}
