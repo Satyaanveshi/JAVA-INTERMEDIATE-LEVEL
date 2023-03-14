@@ -4,7 +4,7 @@
 import java.util.*;
 class Pronic
 {
-    int num;
+    int num,x=0,k=0;
     static Scanner sc=new Scanner(System.in);
     Pronic()
     {
@@ -17,7 +17,6 @@ class Pronic
     }
     boolean ispronic(int v)
     {
-        int x=0,k=0;
         if(x>v)
         {
             if(k==1)
