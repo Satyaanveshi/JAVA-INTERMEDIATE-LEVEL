@@ -1,0 +1,67 @@
+import java.util.*;
+class Matrix
+{
+    static Scanner sc=new Scanner(System.in);
+    int arr[][];
+    int m,n;
+    Matrix(int i,int j)
+    {
+        m=i;
+        n=j;
+        arr=new int[m][n];
+    }
+    void fillarray()
+    {
+        System.out.println("Enter elements for the matrix:");
+        for(int x=0;x<m;x++)
+        {
+            for(int y=0;y<n;y++)
+            {
+                arr[x][y]=sc.nextInt();
+            }
+        }
+    }
+    Matrix SubMat(Matrix A)
+    {
+        Matrix ob=new Matrix(A.m,A.n);  
+        System.out.println("Enter matrix 2:");
+        ob.fillarray();     
+        int temp[][]=new int[A.m][A.n];
+        for(int x=0;x<A.m;x++)
+        {
+            for(int y=0;y<A.n;y++)
+            {
+                temp[x][y]=A.arr[x][y]-ob.arr[x][y];
+                ob.arr[x][y]=temp[x][y];
+            }
+        }
+        return(ob);
+    }
+    void display()
+    {
+        System.out.println("The matrix:");
+        for(int x=0;x<m;x++)
+        {
+            for(int y=0;y<n;y++)
+            {
+                System.out.print(arr[x][y]+" ");
+            }
+            System.out.println();
+        }
+    }
+    public static void main(String args[])
+    {
+        System.out.println("Enter row size:");
+        int m=sc.nextInt();
+        System.out.println("Enter column size:");
+        int n=sc.nextInt();
+        Matrix ob1=new Matrix(m,n);
+        Matrix ob2=new Matrix(m,n);
+        System.out.println("Enter matrix 1:");
+        ob1.fillarray();
+        ob2=ob2.SubMat(ob1);   //This step is most important!You have to overwrite the object else the
+                               //original object array will be displayed instead of the subtracted one.
+        System.out.println("The difference of matrices 1 and 2:");
+        ob2.display();
+    }
+}
