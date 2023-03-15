@@ -1,0 +1,25 @@
+//The program illustrates the use of StringTokenizer class present in the 
+//java.util package.
+
+import java.util.*;
+class Tokenizer
+{
+    static void main()
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a paragraph:");
+        String para=" "+sc.nextLine()+" ";
+        System.out.println("Enter a word to be searched:");
+        String word=sc.next();
+        StringTokenizer st=new StringTokenizer(para);
+        int c=0;
+        int n=st.countTokens();  //this function counts the no. of words in para
+        while(st.hasMoreTokens())  //boolean function to check availability of words
+        {            
+            if(word.equals(st.nextToken()))  //this fuction extracts the next word
+            c++;            
+        }
+        System.out.println("The frequency of "+word+" is: "+c);
+        System.out.println("Total words:"+n);
+    }
+}
