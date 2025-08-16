@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 class daynum
 {
     public static void main()
